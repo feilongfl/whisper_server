@@ -14,6 +14,7 @@ torch = {version = "^2.1.2+rocm5.6", source = "pytorch-rocm"}
 torchvision = {version = "^0.16.2+rocm5.6", source = "pytorch-rocm"}
 torchaudio = {version = "^2.1.2+rocm5.6", source = "pytorch-rocm"}
 flask = "^3.0.0"
+poethepoet = "^0.24.4"
 
 [[tool.poetry.source]]
 name = "pytorch-rocm"
@@ -23,3 +24,6 @@ priority = "supplemental"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poe.tasks]
+serve = "flask -A wisper_server run"
