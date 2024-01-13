@@ -1,6 +1,7 @@
 import torch
 from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
 import json
+import threading
 
 class WhisperGPT():
     def __init__(self) -> None:
@@ -27,9 +28,12 @@ class WhisperGPT():
             device=device,
         )
         
+        self.lock = threading.Lock()
+        
     def process(self, audio: str):
-        # todo: lock here
-        result = self.pipe(audio)
+        self.lock.acquire()
+        result = self.pipe(audio) # only one pipe
+        self.lock.release()
         return json.dumps(result)
         
     def print(self, result):
