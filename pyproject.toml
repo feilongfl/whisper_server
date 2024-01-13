@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "wisper-server"
+version = "0.1.0"
+description = ""
+authors = ["YuLong Yao <feilongphone@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+transformers = {git = "https://github.com/huggingface/transformers.git"}
+accelerate = "^0.25.0"
+datasets = {extras = ["audio"], version = "^2.16.1"}
+torch = {version = "^2.1.2+rocm5.6", source = "pytorch-rocm"}
+torchvision = {version = "^0.16.2+rocm5.6", source = "pytorch-rocm"}
+torchaudio = {version = "^2.1.2+rocm5.6", source = "pytorch-rocm"}
+flask = "^3.0.0"
+
+[[tool.poetry.source]]
+name = "pytorch-rocm"
+url = "https://download.pytorch.org/whl/rocm5.6"
+priority = "supplemental"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
