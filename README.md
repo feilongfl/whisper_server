@@ -1,4 +1,4 @@
-# wisper server
+# whisper server
 
 use whisper as a web server api
 

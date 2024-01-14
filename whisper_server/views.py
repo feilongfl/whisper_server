@@ -1,6 +1,6 @@
-from wisper_server import app
+from whisper_server import app
 from flask import request
-from wisper_server.whisper_gpt import WhisperGPT
+from whisper_server.whisper_gpt import WhisperGPT
 import tempfile
 
 # global models

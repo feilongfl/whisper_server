@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "wisper-server"
+name = "whisper-server"
 version = "0.1.0"
 description = ""
 authors = ["YuLong Yao <feilongphone@gmail.com>"]
@@ -26,4 +26,4 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poe.tasks]
-serve = "flask -A wisper_server run"
+serve = "flask -A whisper_server run"
