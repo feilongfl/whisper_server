@@ -4,16 +4,16 @@ import json
 import threading
 
 class WhisperGPT():
-    def __init__(self) -> None:
+    def __init__(self, model_id) -> None:
         device = "cuda:0" if torch.cuda.is_available() else "cpu"
         torch_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
 
-        model_id = "openai/whisper-large-v3"
+        self.model_id = model_id
         model = AutoModelForSpeechSeq2Seq.from_pretrained(
-            model_id, torch_dtype=torch_dtype, low_cpu_mem_usage=True, use_safetensors=True
+            self.model_id, torch_dtype=torch_dtype, low_cpu_mem_usage=True, use_safetensors=True
         )
         model.to(device)
-        processor = AutoProcessor.from_pretrained(model_id)
+        processor = AutoProcessor.from_pretrained(self.model_id)
         
         self.pipe = pipeline(
             "automatic-speech-recognition",
