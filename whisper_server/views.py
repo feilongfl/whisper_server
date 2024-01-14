@@ -24,7 +24,7 @@ def exec_whisper(model, audio_stream):
 
 
 @app.route("/v1/audio/transcriptions", methods=["POST"])
-def upload_file():
+def v1_audio_transcriptions():
     if request.method == "POST":
         print(request.form)
         print(request.files)
