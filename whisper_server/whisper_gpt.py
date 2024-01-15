@@ -3,6 +3,10 @@ from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
 import json
 import threading
 
+# def text_encoder(obj):
+#     if 'text' in obj:
+#         obj['text'] = obj['text'].encode('utf-8').decode('unicode_escape')
+#     return obj
 
 class WhisperGPT:
     def __init__(self, model_id) -> None:
@@ -38,7 +42,7 @@ class WhisperGPT:
         self.lock.acquire()
         result = self.pipe(audio)  # only one pipe
         self.lock.release()
-        return json.dumps(result)
+        return json.dumps(result, ensure_ascii=False)
 
     def print(self, result):
         print(result["chunks"])
