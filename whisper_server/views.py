@@ -34,3 +34,9 @@ def v1_audio_transcriptions():
             else whisperGPT.model_id,
             request.files["file"],
         )
+
+
+@app.route("/v1/audio/speech", methods=["POST"])
+def v1_audio_speech():
+    if request.method != "POST":
+        return 'Example: curl -X POST -d "test" http://xxxxx', 400
