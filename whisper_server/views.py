@@ -25,15 +25,20 @@ def exec_whisper(model, audio_stream):
 
 @app.route("/v1/audio/transcriptions", methods=["POST"])
 def v1_audio_transcriptions():
-    if request.method == "POST":
-        print(request.form)
-        print(request.files)
-        return exec_whisper(
-            request.form["model"]
-            if "model" in request.form.keys()
-            else whisperGPT.model_id,
-            request.files["file"],
+    if request.method != "POST":
+        return (
+            "Example: curl -X POST -F 'model=openai/whisper-large-v3' -F 'file=@data/BV1R64y1E7Zz.mp3' http://xxxxx/v1/audio/transcriptions",
+            400,
         )
+
+    print(request.form)
+    print(request.files)
+    return exec_whisper(
+        request.form["model"]
+        if "model" in request.form.keys()
+        else whisperGPT.model_id,
+        request.files["file"],
+    )
 
 
 @app.route("/v1/audio/speech", methods=["POST"])
