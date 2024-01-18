@@ -1,11 +1,13 @@
 from whisper_server import app
 from flask import request
+from whisper_server.tts import Speech
 from whisper_server.whisper_gpt import WhisperGPT
 import tempfile
 from whisper_server.lux import Lux
 
 # global models
 whisperGPT = WhisperGPT("openai/whisper-large-v3")
+speech = Speech("tts_models/multilingual/multi-dataset/xtts_v2")
 
 
 @app.route("/")
@@ -60,3 +62,6 @@ def v1_bilibili_transcriptions():
 def v1_audio_speech():
     if request.method != "POST":
         return 'Example: curl -X POST -d "test" http://xxxxx', 400
+
+    speech.play(request.form["text"])
+    return "done"
