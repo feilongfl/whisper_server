@@ -6,7 +6,7 @@ authors = ["YuLong Yao <feilongphone@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = ">=3.11, <3.12"
 transformers = {git = "https://github.com/huggingface/transformers.git"}
 accelerate = "^0.25.0"
 datasets = {extras = ["audio"], version = "^2.16.1"}
@@ -15,6 +15,7 @@ torchvision = {version = "^0.16.2+rocm5.6", source = "pytorch-rocm"}
 torchaudio = {version = "^2.1.2+rocm5.6", source = "pytorch-rocm"}
 flask = "^3.0.0"
 poethepoet = "^0.24.4"
+tts = "^0.22.0"
 
 [[tool.poetry.source]]
 name = "pytorch-rocm"
