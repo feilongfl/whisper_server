@@ -16,6 +16,7 @@ torchaudio = {version = "^2.1.2+rocm5.6", source = "pytorch-rocm"}
 flask = "^3.0.0"
 poethepoet = "^0.24.4"
 tts = "^0.22.0"
+fish-speech = { path = "part3rd/fish_speech", develop = false }
 
 [[tool.poetry.source]]
 name = "pytorch-rocm"
